@@ -23,6 +23,7 @@
     /// <summary>Gets a new instance of the board with the numbers 1-9 in place. </summary>
     /// <returns>A list of 9 strings representing each square.</returns>
 
+
     static List<string> GetNewBoard()
     {
         List<string> board = new List<string>();
@@ -31,12 +32,12 @@
             board.Add(i.ToString());
         }
 
-        /**
+        ///**
         NOTE: THIS IS AN ARRAY, then returned into a list "List"
 
         string[] numbers = {"1", "2", "3"};
         return new List<string>(numbers);
-        **/
+        //**/
         return board;
     }
 
@@ -148,15 +149,23 @@
     /// <returns>A 1-based spot number (not a 0-based index)</returns>
     static int GetMoveChoice(string currentPlayer)
     {
-        if (currentPlayer == "x")
+        Console.Write($"{currentPlayer}'s turn to choose a square (1-9): ");
+        string move_string = Console.ReadLine() ?? ""; //?? avoids the null problem
+
+
+        /*** THIS IS ANOTHER OPTION ***
+        string? move_string = Console.ReadLine();
+        if (move_string == null) 
         {
-            return 1;
+            return 0;
         }
-        else 
-        {
-            return 1;
-        }
-        
+        int choice = int.Parse(move_string);
+        return choice;
+        ******************************/
+
+
+        int choice = int.Parse(move_string);
+        return choice;
     }
 
     /// <summary>
